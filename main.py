@@ -17,6 +17,10 @@ user_bet = screen.textinput(title="APUESTA", prompt="¿Qué tortuga ganará la c
                                                     " Donatello?")
 
 leonardo.penup()
+leonardo.setposition(210, -150)
+leonardo.pendown()
+leonardo.setposition(210, 150)
+leonardo.penup()
 leonardo.setposition(-230, -100)
 donatello.penup()
 donatello.setposition(-230, -50)
@@ -29,9 +33,10 @@ def random_forward (turtle):
     turtle.forward(random.randint(0,10))
 
 def check_llegada(turtle):
-    if turtle.xcor() > 230:
-        turtle.write(f"EL GANADOR ES: {turtle}")
+    if turtle.xcor() >= 200:
         return False
+    else:
+        return True
 
 
 
@@ -39,10 +44,37 @@ race = True
 
 while race:
     random_forward(leonardo)
-    check_llegada(leonardo)
+    if check_llegada(leonardo) == False:
+        print("El Ganador es Leonardo. ")
+        if user_bet.lower() == leonardo:
+            print("Ganaste!")
+        else:
+            print("Perdiste!")
+        break
     random_forward(donatello)
+    if check_llegada(donatello) == False:
+        print("El Ganador es Donatello. ")
+        if user_bet.lower() == donatello:
+            print("Ganaste!")
+        else:
+            print("Perdiste!")
+        break
     random_forward(miguel_angel)
+    if check_llegada(miguel_angel) == False:
+        print("El Ganador es Miguel Angel. ")
+        if user_bet.lower() == "miguel angel":
+            print("Ganaste!")
+        else:
+            print("Perdiste!")
+        break
     random_forward(rafael)
+    if check_llegada(rafael) == False:
+        print("El Ganador es Rafael ")
+        if user_bet.lower() == "rafael":
+            print("Ganaste!")
+        else:
+            print("Perdiste!")
+        break
 
 
 
