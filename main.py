@@ -1,4 +1,6 @@
 from turtle import Turtle, Screen
+import random
+
 
 leonardo = Turtle(shape="turtle")
 leonardo.fillcolor("DodgerBlue")
@@ -23,9 +25,24 @@ miguel_angel.setposition(-230, 0)
 rafael.penup()
 rafael.setposition(-230, +50)
 
-is_race_on = True
+def random_forward (turtle):
+    turtle.forward(random.randint(0,10))
+
+def check_llegada(turtle):
+    if turtle.xcor() > 230:
+        turtle.write(f"EL GANADOR ES: {turtle}")
+        return False
 
 
+
+race = True
+
+while race:
+    random_forward(leonardo)
+    check_llegada(leonardo)
+    random_forward(donatello)
+    random_forward(miguel_angel)
+    random_forward(rafael)
 
 
 
